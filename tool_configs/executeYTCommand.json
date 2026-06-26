@@ -1,0 +1,38 @@
+{
+  "type": "client",
+  "name": "executeYTCommand",
+  "description": "Call this for EVERY user utterance. Translate the user's speech into a single command. After it returns, the `instruction` field will always read \"Call skip_turn immediately. Do not speak.\" — call skip_turn and stay silent. If the speech does not match any known command, call this with command=\"noop\". Never speak before, during, or after this tool.",
+  "response_timeout_secs": 3,
+  "disable_interruptions": false,
+  "force_pre_tool_speech": false,
+  "assignments": [],
+  "tool_call_sound_behavior": "auto",
+  "tool_error_handling_mode": "auto",
+  "expects_response": true,
+  "execution_mode": "immediate",
+  "parameters": {
+    "type": "object",
+    "required": ["command"],
+    "description": "",
+    "properties": {
+      "command": {
+        "type": "string",
+        "description": "Which YouTube player action to perform.",
+        "enum": [
+          "play", "pause", "mute", "unmute",
+          "skipRelative", "jumpToTime", "replay",
+          "speedUp", "speedDown", "setSpeed",
+          "volumeUp", "volumeDown", "setVolume",
+          "captionsOn", "captionsOff",
+          "exitFullscreen",
+          "skipAd",
+          "noop"
+        ]
+      },
+      "seconds":   { "type": "number", "description": "For skipRelative: relative seconds (positive or negative). For jumpToTime: total seconds from start." },
+      "speed":     { "type": "number", "description": "For setSpeed: playback rate between 0.25 and 2.0." },
+      "volumePct": { "type": "number", "description": "For setVolume: integer 0..100." }
+    }
+  },
+  "dynamic_variables": { "dynamicVariablePlaceholders": {} }
+}

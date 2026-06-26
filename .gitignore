@@ -1,0 +1,35 @@
+node_modules
+dist
+.dev.vars
+.DS_Store
+*.local
+
+# local ElevenLabs credentials — never commit
+.env
+.env.local
+
+# local ElevenLabs CLI registry — points at your own cloud agent/tool, not shipped.
+# `npm run setup` provisions a fresh agent and prints its id; nothing reads these.
+agents.json
+tools.json
+
+# build cache
+tsconfig.tsbuildinfo
+
+# --- open-source hygiene: ship only code + user-facing docs ---
+
+# Claude / AI-assistant artifacts
+CLAUDE.md
+.claude/
+.superpowers/
+
+# knowledge-graph output
+graphify-out/
+*.graph
+
+# internal planning / dev docs: ignore all markdown, then whitelist the
+# user-facing files we actually want to ship.
+*.md
+!README.md
+!docs/SETUP.md
+!docs/privacy-policy.md

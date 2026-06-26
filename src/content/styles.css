@@ -1,0 +1,57 @@
+.ytv-root {
+  position: fixed;
+  bottom: 80px;
+  right: 24px;
+  z-index: 2147483647;
+  font-family: 'YouTube Sans', Roboto, system-ui, sans-serif;
+  color: #fff;
+}
+
+.ytv-orb {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: grid; place-items: center;
+  font-size: 18px; line-height: 1;
+  background: rgba(40, 40, 40, 0.85);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.ytv-orb:hover { transform: scale(1.05); }
+
+.ytv-orb--idle       { background: rgba(60, 60, 60, 0.85); }
+.ytv-orb--connecting { background: rgba(120, 120, 0, 0.85); animation: ytv-pulse 1s infinite; }
+.ytv-orb--listening  { background: rgba(40, 130, 220, 0.9); }
+.ytv-orb--executing  { background: rgba(40, 170, 90, 0.95); }
+.ytv-orb--noop       { background: rgba(150, 150, 150, 0.95); }
+.ytv-orb--error      { background: rgba(220, 60, 60, 0.95); }
+
+@keyframes ytv-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.6; }
+}
+
+.ytv-bubble {
+  position: absolute;
+  bottom: 56px;
+  right: 0;
+  min-width: 120px;
+  max-width: 260px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(30, 30, 30, 0.92);
+  font-size: 13px;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+  animation: ytv-bubble-in 0.15s ease-out;
+}
+@keyframes ytv-bubble-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.ytv-root.hidden { display: none; }
